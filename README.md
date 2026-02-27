@@ -17,7 +17,7 @@ For this homework you need to complete four tasks:
   3. Fill out the `get_special_numbers` function.
   4. Design and fill out the `my_for_loop` function as well as the `my_while_loop` function.
 
-So you understand what we are shooting for, an example run looks like this (this only includes output for the first three tasks):
+So you understand what we are shooting for, an example run looks like this:
 ```
 Give me a sentence: No secret word here
 Try again
@@ -36,6 +36,17 @@ Done
 27
 33
 39
+Give me a string: hello
+h is a consonant
+e is a vowel
+l is a consonant
+l is a consonant
+o is a vowel
+Choose one option: a, b, or c: a
+Choose one option: a, b, or c: d
+try again
+Choose one option: a, b, or c: b
+Goodbye
 The End
 ```
 

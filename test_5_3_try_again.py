@@ -13,4 +13,4 @@ def test_5_3_try_again(capsys, monkeypatch):
         hw04.my_while_loop()
     captured = capsys.readouterr()
     expected1 = "try again"
-    assert expected1 in captured.out, "Tip: if you don't select `a`, `b`, or `c`, it should print `try again` and repeat.""
+    assert expected1 in captured.out, "Tip: if you don't select `a`, `b`, or `c`, it should print `try again` and repeat."
