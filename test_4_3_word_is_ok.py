@@ -1,16 +1,19 @@
 import pytest
 import hw04  # Import the module here
-import sys
 
 # Part 1
 # ===========
-def test_4_1_word_is_ok(capsys, monkeypatch):
+@pytest.mark.parametrize("word", ["good", "go", "AEIOU"])
+def test_4_3_word_is_ok(capsys, monkeypatch, word):
     # Create a list of input values
-    user_inputs = iter(["good"])
-    # monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+    user_inputs = iter([word])
     with monkeypatch.context() as m:
         m.setattr('builtins.input', lambda _: next(user_inputs))
         hw04.my_for_loop()
     captured = capsys.readouterr()
-    expected = "g is a consonant\no is a vowel\no is a vowel\nd is a consonant"
-    assert expected in captured.out, "Tip: Did you check vowel vs not vowel; did you print correctly?"
+    expected = {
+        "good": "letter g is a consonant\nletter o is a vowel\nletter o is a vowel\nletter d is a consonant",
+        "go": "letter g is a consonant\nletter o is a vowel",
+        "AEIOU": "letter A is a vowel\nletter E is a vowel\nletter I is a vowel\nletter O is a vowel\nletter U is a vowel",
+    }[word]
+    assert captured.out == expected + "\n", "Tip: Did you check vowel vs not vowel; did you print correctly?"

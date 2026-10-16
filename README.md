@@ -1,21 +1,21 @@
 # Assignment 04: Loop exercises
 
 
-**Due: Thursday 03/05 by Midnight**
+**Due: As listed on course schedule**
 
 *Note: Homework Assignment 4 should be completed individually.*
 
 # Objective
-You will complete three functions with loops that accomplish 3 specific tasks. In addition, you need to fill out two functions of your own design.
+You will complete three functions with loops that accomplish 3 specific tasks. In addition, you need to fill out two additional functions.
 
-This homework has no "theme", it's just three different exercises and two self-designed functions.
+This homework has no "theme", it's just three different exercises and two additional exercises.
 
 For this homework you need to complete four tasks:
 
   1. Fill out the `check_text` function.
   2. Fill out the `check_greater` function.
   3. Fill out the `get_special_numbers` function.
-  4. Design and fill out the `my_for_loop` function as well as the `my_while_loop` function.
+  4. Fill out the `my_for_loop` function as well as the `my_while_loop` function.
 
 So you understand what we are shooting for, an example run looks like this:
 ```
@@ -29,7 +29,6 @@ Try again
 Give me a first integer: 3
 Give me a second integer: 5
 Second is Greater
-Done
 3
 9
 21
@@ -37,11 +36,11 @@ Done
 33
 39
 Give me a string: hello
-h is a consonant
-e is a vowel
-l is a consonant
-l is a consonant
-o is a vowel
+letter h is a consonant
+letter e is a vowel
+letter l is a consonant
+letter l is a consonant
+letter o is a vowel
 Choose one option: a, b, or c: a
 Choose one option: a, b, or c: d
 try again
@@ -50,13 +49,13 @@ Goodbye
 The End
 ```
 
-You only need to complete the functions. The `main` is provided for you and it takes care of all the printouts except the success or error messages we require you to print (more on that below).
+Complete the five functions described below. The provided `main()` calls them in order. Your functions handle their own input prompts and required output; the provided code prints `The End` after `main()` finishes normally.
 
-You need to add the DocStrings below every function as well as small but informative comments explaining your logic.
+You need to add a docstring inside each of the five functions you implement as well as small but informative comments explaining your logic.
 
 # A Note on passing the tests
 
-Any tests are very strict with respect to the format of requested prompts and printouts so pay attention to exactly what is requested and replicate it as exactly as possible.
+You may choose your own input prompts; the tests do not check prompt wording. Required printed messages must match the specified capitalization, punctuation, spacing, and line breaks. Do not print additional messages. Quotation marks used to describe output are not part of the output unless explicitly shown as part of the message.
 
 
 # Theory reminders
@@ -72,20 +71,22 @@ If you use the keyword `continue` inside a loop, this will immediately jump to t
 
 ## The global variable `secret_word`
 
-The variable `secret_word` is declred at the top and outside any function. This makes it a member of the **global context** and visible to all functions.
+The variable `secret_word` is declared at the top and outside any function. This makes it a member of the **global context** and visible to all functions.
 
-  * This variable is initialized with the provided word "food" but can be set to any secret word. Testing coes not depend on any particular word, so feel free to change it for testing.
+  * This variable is initialized with the provided word "food" but can be set to any secret word. Testing does not depend on any particular word, so feel free to change it for testing.
 
 
 ## Task 1: check_text
 
 ### define the function
 
-The objective of this function is to read read text from the user and then check three conditions.
+The objective of this function is to read text from the user and then check three conditions.
 
   * If the user inputs text that uses the secret word `secret_word`, then the function should print out the following message: `You used the secret word!`. Note that the message shown is what should appear on the terminal, it's not necessarily how you construct the string that you print.
-  * If the user inputs text that uses the word `dog` or the word `Dog`, then the function should print out the following message: `You used the word "dog" or the word "Dog"!`. Note that the message shown is what should appear on the terminal, it's not necessarily how you construct the string that you print. In particular, you will need to print double quotes inside a string, which will require that you escape them using this notation: `\"` every time you wish to place them inside a string.
+  * If the user inputs text that uses the word `dog` or the word `Dog`, then the function should print out the following message: `You used the word "dog" or the word "Dog"!`. Note that the message shown is what should appear on the terminal, it's not necessarily how you construct the string that you print. For example, use a single-quoted Python string: `'You used the word "dog" or the word "Dog"!'`. Alternatively, use `\"` to escape quotes inside a double-quoted Python string.
   * If the user inputs text that does not use the secret word or the words `dog` or `Dog`, it should print the message `Try again` and it should run the whole body of the loop again. This is shown in the example output shown above.
+
+Matching uses substrings: `dog` in `dogs` and `Dog` in `Dogma` both count. Check the secret word first; if it matches, print only the secret-word message. Otherwise check for `dog` or `Dog`. Return after either successful match. Other capitalization, such as `DOG`, is not required.
 
 ### Notes:
 
@@ -96,7 +97,7 @@ Also, you do not need to do input checking. If the user inputs a bad input (like
 
 ### define the function
 
-The purpose of check_greater function is to get two integers from te user (you decide what prompts to use), and compare them. There are three cases of what can happen:
+The purpose of check_greater function is to get two integers from the user (you decide what prompts to use), and compare them. There are three cases of what can happen:
 
   * If the first integer is greater than the second, your function should print `First is Greater`.
   * If the second integer is greater than the first, your function should print `Second is Greater`.
@@ -115,7 +116,7 @@ Also, you do not need to do input checking. If the user inputs a bad input (like
 The purpose of get_special_numbers function is to use a for loop to examine each and every number between 1 and 40 and either print it (each in its own line) or skip it, depending on three criteria.
 
   * If the number is even, it should be discarded
-  * If the number is not a mltiple of 3, it should be discarded.
+  * If the number is not a multiple of 3, it should be discarded.
   * If the number is a multiple of 5, it should be discarded.
   * Otherwise, you should print the value (as an integer)
 
@@ -126,21 +127,21 @@ Also, you do not need to do input checking. If the user inputs a bad input (like
 
 ## Task 4: my_for_loop and my_while_loop functions
 
-These are self-desig functions that take no inputs.
+These functions take no parameters, but read user input using `input()`.
 
 ### my_for_loop
 
-The function has to ask for a string from the user. If the string length (use the `len` function) is not in the range [2,5] (between 2 and 5 inclusive), or if the string has spaces, then the function should immediately return.
-If the word is of a valid length, then the function should print one of the following things:
-  * if the letter is a vowel, it should print: `"letter <let> is a vowel"` (where `<let>` is the letter in question)
-  * if the letter is a consonant, it should print: `"letter <let> is a consonant"` (where `<let>` is the letter in question)
+The function has to ask for a string from the user. If the string length (use the `len` function) is not in the range [2,5] (between 2 and 5 inclusive), or if the string has spaces, then the function should print `bad word` and immediately return.
+Treat both uppercase and lowercase A, E, I, O, and U as vowels; treat every other character as a consonant for this exercise. If the string has a valid length and contains no spaces, then the function should print one of the following things:
+  * if the letter is a vowel, it should print: `letter <let> is a vowel` (where `<let>` is the letter in question)
+  * if the letter is a consonant, it should print: `letter <let> is a consonant` (where `<let>` is the letter in question)
 
 ### my_while_loop
 The function should offer the user three choices, where the user needs to input one of three letters: `a`, `b`, or `c`.
   * if the user selects `a`, the menu should repeat.
-  * if the user selects `b`, the function should print `"Goodbye"` and return.
-  * if the user selects `c`, the program should exit immediately.
-  * if any other letter is selected, the loop should print `"try again"` and the menu should repeat.
+  * if the user selects `b`, the function should print `Goodbye` and return.
+  * if the user selects `c`, the program should exit immediately (for example, using `sys.exit()`).
+  * if any other letter is selected, the loop should print `try again` and the menu should repeat.
 
 # Output Examples
 
@@ -153,7 +154,6 @@ You used the secret word!
 Give me a first integer: 4
 Give me a second integer: 3
 First is Greater
-Done
 3
 9
 21
@@ -161,11 +161,11 @@ Done
 33
 39
 Give me a string: hello
-h is a consonant
-e is a vowel
-l is a consonant
-l is a consonant
-o is a vowel
+letter h is a consonant
+letter e is a vowel
+letter l is a consonant
+letter l is a consonant
+letter o is a vowel
 Choose one option: a, b, or c: a
 Choose one option: a, b, or c: d
 try again
@@ -182,7 +182,6 @@ You used the word "dog" or the word "Dog"!
 Give me a first integer: 2
 Give me a second integer: 7
 Second is Greater
-Done
 3
 9
 21
@@ -190,11 +189,11 @@ Done
 33
 39
 Give me a string: hello
-h is a consonant
-e is a vowel
-l is a consonant
-l is a consonant
-o is a vowel
+letter h is a consonant
+letter e is a vowel
+letter l is a consonant
+letter l is a consonant
+letter o is a vowel
 Choose one option: a, b, or c: a
 Choose one option: a, b, or c: d
 try again
@@ -211,7 +210,6 @@ You used the word "dog" or the word "Dog"!
 Give me a first integer: 7
 Give me a second integer: 1
 First is Greater
-Done
 3
 9
 21
@@ -219,11 +217,11 @@ Done
 33
 39
 Give me a string: hello
-h is a consonant
-e is a vowel
-l is a consonant
-l is a consonant
-o is a vowel
+letter h is a consonant
+letter e is a vowel
+letter l is a consonant
+letter l is a consonant
+letter o is a vowel
 Choose one option: a, b, or c: a
 Choose one option: a, b, or c: d
 try again
@@ -248,7 +246,6 @@ Try again
 Give me a first integer: 5
 Give me a second integer: 8
 Second is Greater
-Done
 3
 9
 21
@@ -256,11 +253,11 @@ Done
 33
 39
 Give me a string: hello
-h is a consonant
-e is a vowel
-l is a consonant
-l is a consonant
-o is a vowel
+letter h is a consonant
+letter e is a vowel
+letter l is a consonant
+letter l is a consonant
+letter o is a vowel
 Choose one option: a, b, or c: a
 Choose one option: a, b, or c: d
 try again
@@ -277,7 +274,6 @@ You used the word "dog" or the word "Dog"!
 Give me a first integer: 7
 Give me a second integer: 1
 First is Greater
-Done
 3
 9
 21
@@ -285,6 +281,10 @@ Done
 33
 39
 Give me a string: hi there
+bad word
+Choose one option: a, b, or c: b
+Goodbye
+The End
 ```
 
 ### F: word `Dog` used, first number greater, "hello", a, d, c
@@ -295,7 +295,6 @@ You used the word "dog" or the word "Dog"!
 Give me a first integer: 7
 Give me a second integer: 1
 First is Greater
-Done
 3
 9
 21
@@ -303,11 +302,11 @@ Done
 33
 39
 Give me a string: hello
-h is a consonant
-e is a vowel
-l is a consonant
-l is a consonant
-o is a vowel
+letter h is a consonant
+letter e is a vowel
+letter l is a consonant
+letter l is a consonant
+letter o is a vowel
 Choose one option: a, b, or c: a
 Choose one option: a, b, or c: d
 try again
@@ -322,7 +321,7 @@ Choose one option: a, b, or c: c
 ### General
 The submission:
 
-  * **IMPORTANT**: If your code does not compile, you get 0% of your grade so make sure you run your code often (to avoid syntax or runtime errors) and you always have it in a "running" state, even if it does not get the desired results.
+  * **IMPORTANT**: If your code has syntax errors, you receive a 50% deduction so make sure you run your code often (to avoid syntax or runtime errors) and you always have it in a "running" state, even if it does not get the desired results.
   * Your grade will be the percentage of tests you pass.
   * You have any imports on the top, you added Docstrings (or -5%),
   * You added a few small but informative comments (or -5%)
@@ -331,7 +330,7 @@ The submission:
 
   The program:
 
-    * Passes all 14 tests (or lose ~7% per missed test).
+    * Passes all tests. The test component of your grade is the percentage of tests passed; the deductions listed above also apply.
 
   Note: before submitting, you should check all the boxes that you actually completed like this:
 
@@ -348,4 +347,4 @@ The submission:
 
 ## Submitting
 
-Submit to your GitHub repositories before the due date/time.
+Submit to Gradescope before the due date/time.
